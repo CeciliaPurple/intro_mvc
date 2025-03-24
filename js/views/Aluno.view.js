@@ -1,4 +1,4 @@
-class AlunoView{
+class alunoView{
     constructor(table){
         this.tableList = table
         this.tableHeader = this.tableList.querySelector('thead')
@@ -21,13 +21,31 @@ class AlunoView{
     }
 
     render(alunos) {
-            alunos.forEach(aluno => {
-                let htmlRow = document.createElement('tr')
-                htmlRow.innerHTML = `<td>${aluno.nome}</td>`
+        this.tableBody.innerHTML = ''
+        alunos.forEach(aluno => {
+            let htmlRow = document.createElement('tr')
+            htmlRow.innerHTML = `<td>${aluno.nome}</td>`
+            let encontrado = false
+            this.materias.forEach(materia => {
+                if (materia in aluno.notas) {
+                    encontrado = true
+                }
+            })
+
+            if (encontrado) {
                 this.materias.forEach(materia => {
-                    htmlRow.innerHTML = `<td>$[aluno.nome]</td>`
-               })
-                this.tableBody.appendchild(htmlRow)
-            }) 
-        }
+                    htmlRow.innerHTML += `<td>
+                    ${aluno.media[materia] !== undefined ? aluno.media[materia] :
+                        `<a href ="edit.html?id=${aluno._id}">Incluir Notas</a>`}
+                    </td>`
+                })
+            }else {
+                htmlRow.innerHTML += `<td colspan=${this.materias.leght}">
+                <a href="edit.html?id=${aluno._id}">Incluir Notas</a>
+                </td>`
+            }
+
+            this.tableBody.appendchild(htmlRow)
+        }) 
+    }
 }

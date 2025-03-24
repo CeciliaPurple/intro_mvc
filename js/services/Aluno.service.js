@@ -1,4 +1,4 @@
-class AlunoService{
+class alunoService{
     constructor() {
         this.alunos =[]
     }
@@ -13,5 +13,4 @@ class AlunoService{
     update(aluno) {
         return aluno
     }
-
 }
