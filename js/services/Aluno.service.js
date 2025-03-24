@@ -1,4 +1,4 @@
-class alunoService{
+class AlunoService{
     constructor() {
         this.alunos =[]
     }
@@ -12,5 +12,9 @@ class alunoService{
 
     update(aluno) {
         return aluno
+    }
+
+    searchById(id) {
+        return this.alunos.find(aluno => aluno._id === id)
     }
 }
