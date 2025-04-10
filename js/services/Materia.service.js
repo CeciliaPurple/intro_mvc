@@ -9,7 +9,7 @@ class MateriaService {
             throw new Error('A materia deve ser uma instância de MateriaModel')
         }
         this.materias.push(materia)
-        this.updateLocalStorage
+        this.updateLocalStorage()
     }
 
     update(materia) {
